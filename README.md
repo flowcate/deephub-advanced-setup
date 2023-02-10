@@ -28,7 +28,9 @@ When first starting up the system of five containers, the keycloak instance will
 * In the left vertical navigatio nmenu, go down to "Configure" where you'll find the sub-menu "Realm settings". Click the latter.
 * In the top right corner of the screen, you'll see a drop-down menu named "Action": open it up and select "Partial import".
 * Choose "Browse" button in the upcoming dialog to select the "omlox-realm.json" provided with this repo.
-* The file gets parsed and as result, the number of "Clients", "Realm roles" and "Client roles" are displayed. Mark the checkboxes in front of all these three categories to import all of those by clicking import.
+* The file gets parsed and as result, the number of "Clients", "Realm roles" and "Client roles" are displayed. Mark the checkboxes in front of all these three categories to import all of those.
+* Choose "Overwrite" from the "If a resource already exists, specify what should be done" drop down menu below.
+* Click "import".
 * Click "close" in the upcoming dialog that should indicate the import success.
 * Click "Users" in the vertical left main menu to add a new user.
 * Choose "Add User" and create a new user named "deephub-tester" (rest of this example relies on it)
