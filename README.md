@@ -30,11 +30,11 @@ When first starting up the system of five containers, the keycloak instance will
 * Choose "Browse" button in the upcoming dialog to select the "omlox-realm.json" provided with this repo.
 * The file gets parsed and as result, the number of "Clients", "Realm roles" and "Client roles" are displayed. Mark the checkboxes in front of all these three categories to import all of those.
 * Choose "Overwrite" from the "If a resource already exists, specify what should be done" drop down menu below.
-* Click "import".
-* Click "close" in the upcoming dialog that should indicate the import success.
+* Click "Import".
+* Click "Close" in the upcoming dialog that should indicate the import success.
 * Click "Users" in the vertical left main menu to add a new user.
 * Choose "Add User" and create a new user named "deephub-tester" (rest of this example relies on it)
-* Set a password you want to use for this user in the "Credentials" tab of the newly created user.
+* Set a password you want to use for this user in the "Credentials" tab of the newly created user. Disable the "Temporary" option to just keep the new password at next login.
 * Go to the "Role mapping" tab and click "Assign role".
 * Mark the checkbox in front of "deephub-test-role" and click the "Assign" button below all assignable roles.
 
