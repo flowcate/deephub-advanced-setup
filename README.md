@@ -28,11 +28,13 @@ When first starting up the system of five containers, the keycloak instance will
 * In the left vertical navigatio nmenu, go down to "Configure" where you'll find the sub-menu "Realm settings". Click the latter.
 * In the top right corner of the screen, you'll see a drop-down menu named "Action": open it up and select "Partial import".
 * Choose "Browse" button in the upcoming dialog to select the "omlox-realm.json" provided with this repo.
-* The file gets parsed and as result, the number of "Clients", "Realm roles" and "Client roles" are displayed. Mark the checkboxes in front of all these three categories to import all of those by clicking import.
-* Click "close" in the upcoming dialog that should indicate the import success.
+* The file gets parsed and as result, the number of "Clients", "Realm roles" and "Client roles" are displayed. Mark the checkboxes in front of all these three categories to import all of those.
+* Choose "Overwrite" from the "If a resource already exists, specify what should be done" drop down menu below.
+* Click "Import".
+* Click "Close" in the upcoming dialog that should indicate the import success.
 * Click "Users" in the vertical left main menu to add a new user.
 * Choose "Add User" and create a new user named "deephub-tester" (rest of this example relies on it)
-* Set a password you want to use for this user in the "Credentials" tab of the newly created user.
+* Set a password you want to use for this user in the "Credentials" tab of the newly created user. Disable the "Temporary" option to just keep the new password at next login.
 * Go to the "Role mapping" tab and click "Assign role".
 * Mark the checkbox in front of "deephub-test-role" and click the "Assign" button below all assignable roles.
 
@@ -47,6 +49,8 @@ This happened because the keycloak was not configured properly ... sofar. Now af
 ```Done fetching OpenID configuration```
 
 If you spot the latter, this is a clear sign, that everything is configured correctly now.
+
+Note: You may nevertheless have to stop the system and restart it again because the DeepHub may not have gotten all the latest roles and scopes because the keycloak configuration was ongoing.
 
 In your browser, you may now head over to https://localhost/deephub-ui to access the DeepHub UI. This will cause a warning from your internet browser because this repo only contains a self-signed certificate for the https connection. Except it within the browser's warning dialog and you should be redirected to the UI and from there immediately to the keycloak authentication request. Enter the credentials "deephub-tester" as user name plus the password you've chosen and login. Immediately you get a redirect to the DeepHub-UI in case the credentials were correct.
 
