@@ -50,6 +50,8 @@ This happened because the keycloak was not configured properly ... sofar. Now af
 
 If you spot the latter, this is a clear sign, that everything is configured correctly now.
 
+Note: You may nevertheless have to stop the system and restart it again because the DeepHub may not have gotten all the latest roles and scopes because the keycloak configuration was ongoing.
+
 In your browser, you may now head over to https://localhost/deephub-ui to access the DeepHub UI. This will cause a warning from your internet browser because this repo only contains a self-signed certificate for the https connection. Except it within the browser's warning dialog and you should be redirected to the UI and from there immediately to the keycloak authentication request. Enter the credentials "deephub-tester" as user name plus the password you've chosen and login. Immediately you get a redirect to the DeepHub-UI in case the credentials were correct.
 
 Have fun with the DeepHub!
