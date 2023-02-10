@@ -32,13 +32,32 @@ When first starting up the system of five containers, the keycloak instance will
 * Choose "Overwrite" from the "If a resource already exists, specify what should be done" drop down menu below.
 * Click "Import".
 * Click "Close" in the upcoming dialog that should indicate the import success.
+* Now we need to create "Client Scopes" which can not be imported, unfortunately:
+  *  Click on "Client scopes" in the vertical left main menu and then on "Create client scope".
+  *  Add the name "deephub-test-scope" and hit "Save" at the bottom of this dialog.
+  *  Switch into the "Mappers" tab of the newly created client scope.
+  *  Choose "Configure a new mapper" in the upcoming page.
+  *  Choose "Audience" from the offered options for a mapper.
+  *  As name for the new audience mapper choose "deephub-test-audience-mapper"
+  *  Open the "Included Client Audience" drop down menu and choose "deephub-test-client"
+  *  Enable "Add to ID token" and "Add to access token"
+  *  Hit the "Save" button at the bottom of the dialog
+  *  Go back to the "Client scope details" of the new "deephub-test-scope" and hit "Add mapper" again to create a second mapper.
+  *  Choose "By configuration" in the drop down that pops open and again choose "Audience" from the offered options for a mapper.
+  *  This second mapper has to get the name "deephub-ui-test-audience-mapper", the "Included Client Audience" has to be set to "Deephub-ui-test-client" and the options "Add to ID token" and "Add to access token" have to be enabled like for the first mapper.
+* Now we assign the client scopes and associated mappers to the exiting clients:
+  * Choose the "Clients" menu from the vertical left main menu.
+  * Choose the "deephub-test-client" and open the "Client scopes" tab of it.
+  * Click "Add client scope" and choose the "deephub-test-scope".
+  * Click the "Add" button below and choose "Default" from the popup menu.
+  * Now do the same for the client called "deephub-ui-test-client": Choose "Clients" - > "deephub-ui-test-client" from the list, switch to "Client scopes" tab within it and again choose the "deephub-test-scope" scope and add it as "Default".
 * Click "Users" in the vertical left main menu to add a new user.
 * Choose "Add User" and create a new user named "deephub-tester" (rest of this example relies on it)
 * Set a password you want to use for this user in the "Credentials" tab of the newly created user. Disable the "Temporary" option to just keep the new password at next login.
 * Go to the "Role mapping" tab and click "Assign role".
 * Mark the checkbox in front of "deephub-test-role" and click the "Assign" button below all assignable roles.
 
-THAT's it!
+That's it!
 
 While you did all this, you may have looked at the console where you started all the containers and noticed the following error message from within the DeepHub container:
 
