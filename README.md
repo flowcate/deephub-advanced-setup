@@ -87,14 +87,8 @@ This command will automatically pull the necessary docker images from hub.docker
 |:point_up: | It may become necessary to manually call ```docker-compose pull``` first. This is the case if a newer docker image with the same name got published and therefore needs to get "re-pulled". This should not happen in general as we release updates as docker images with a different/newer tag.|
 |-----------|:---------------------------------------------------------------------------------------------------------------------------|
 
-Now you have your own running DeepHub® instance that can be accessed with any modern web browser at the address: http://localhost:8081
+Now you have your own running DeepHub® instance that can be accessed with any modern web browser at the address: https://localhost
 
-To complement the DeepHub UI shown above, you may also make API calls to the [DeepHub REST API](https://docs.deephub.io/api_reference/restApi.html#/deep-hub-api-rest-api) while running the DeepHub locally. This can be done with a tool such as Postman or cURL. <br />
-To interact with the REST API, you will need to use the following baseURL: http://localhost:8081/deephub/v1 <br />
-
-Example:
-```
-curl http://localhost:8081/deephub/v1/zones/summary
-```
+To complement the DeepHub UI shown above, you may also make API calls to the [DeepHub REST API](https://docs.deephub.io/api_reference/restApi.html#/deep-hub-api-rest-api) while running the DeepHub locally. This can be done with a tool such as Postman or cURL BUT note, you need to add an access token to each request due to the enabled authorization mechanism.
 
 For further information visit [docs.deephub.io](https://docs.deephub.io/installation_instructions/).
