@@ -1,0 +1,20 @@
+{
+  "version": 8,
+  "id": "maptiler-empty-style",
+  "name": "MapTiler Empty Style",
+  "attribution": "<a href=\"https://www.maptiler.com/copyright/\" target=\"_blank\">&copy; MapTiler</a> <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>",
+  "metadata": {
+    "mapbox:autocomposite": true
+  },
+  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=8v89jLLTEcMwkO0l39SU",
+  "sources": {},
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "rgba(0,0,0,0)"
+      }
+    }
+  ]
+}

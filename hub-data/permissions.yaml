@@ -1,0 +1,13 @@
+deephub-test-role:
+  description: Super user with all permissions
+  '/*':
+    - CREATE_ANY
+    - READ_ANY
+    - UPDATE_ANY
+    - DELETE_ANY
+guest:
+  description: A read only guest access
+  '/health':
+    - READ_ANY
+  '/version':
+    - READ_ANY
