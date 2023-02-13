@@ -23,34 +23,10 @@ When first starting up the system of five containers, the keycloak instance will
 * In a browser, open http://localhost to access your new local keycloak instance (if this does not work, wait for a minute, keycloak is most probably still in the process of creating the necessary DB tables)
 * Choose "Administration Console"
 * Login the keycloak instance with user "user" and the passwort "bitnami"
-* Create a new realm called "omlox"
-* Select that new realm.
-* In the left vertical navigatio nmenu, go down to "Configure" where you'll find the sub-menu "Realm settings". Click the latter.
-* In the top right corner of the screen, you'll see a drop-down menu named "Action": open it up and select "Partial import".
-* Choose "Browse" button in the upcoming dialog to select the "omlox-realm.json" provided with this repo.
-* The file gets parsed and as result, the number of "Clients", "Realm roles" and "Client roles" are displayed. Mark the checkboxes in front of all these three categories to import all of those.
-* Choose "Overwrite" from the "If a resource already exists, specify what should be done" drop down menu below.
-* Click "Import".
-* Click "Close" in the upcoming dialog that should indicate the import success.
-* Now we need to create "Client Scopes" which can not be imported, unfortunately:
-  *  Click on "Client scopes" in the vertical left main menu and then on "Create client scope".
-  *  Add the name "deephub-test-scope" and hit "Save" at the bottom of this dialog.
-  *  Switch into the "Mappers" tab of the newly created client scope.
-  *  Choose "Configure a new mapper" in the upcoming page.
-  *  Choose "Audience" from the offered options for a mapper.
-  *  As name for the new audience mapper choose "deephub-test-audience-mapper"
-  *  Open the "Included Client Audience" drop down menu and choose "deephub-test-client"
-  *  Enable "Add to ID token" and "Add to access token"
-  *  Hit the "Save" button at the bottom of the dialog
-  *  Go back to the "Client scope details" of the new "deephub-test-scope" and hit "Add mapper" again to create a second mapper.
-  *  Choose "By configuration" in the drop down that pops open and again choose "Audience" from the offered options for a mapper.
-  *  This second mapper has to get the name "deephub-ui-test-audience-mapper", the "Included Client Audience" has to be set to "Deephub-ui-test-client" and the options "Add to ID token" and "Add to access token" have to be enabled like for the first mapper.
-* Now we assign the client scopes and associated mappers to the exiting clients:
-  * Choose the "Clients" menu from the vertical left main menu.
-  * Choose the "deephub-test-client" and open the "Client scopes" tab of it.
-  * Click "Add client scope" and choose the "deephub-test-scope".
-  * Click the "Add" button below and choose "Default" from the popup menu.
-  * Now do the same for the client called "deephub-ui-test-client": Choose "Clients" - > "deephub-ui-test-client" from the list, switch to "Client scopes" tab within it and again choose the "deephub-test-scope" scope and add it as "Default".
+* Create a new realm called "omlox":
+  * On the top left, open the drop down menu where the current realm "master" is visible.
+  * Click on "Create Realm".
+  * Click the browse button to import the omlox-realm.json that you'll find in this repo.
 * Click "Users" in the vertical left main menu to add a new user.
 * Choose "Add User" and create a new user named "deephub-tester" (rest of this example relies on it)
 * Set a password you want to use for this user in the "Credentials" tab of the newly created user. Disable the "Temporary" option to just keep the new password at next login.
