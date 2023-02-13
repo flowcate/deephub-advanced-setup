@@ -35,6 +35,12 @@ When first starting up the system of five containers, the keycloak instance will
 
 That's it!
 
+If you are running this advanced setup example on a dedicated machine outside your local network, keycloak will enforce https and you will not be able to reach it because the SSL port is already occupied by the apache proxy. If this is the case, you can either switch the keycloak container to be reachable at a different port for https or make the apache proxy container listen on a different port or deactivate the SSL enforcement policy of keycloak. For the latter, as you can't reach the UI in this case, login into the keycloak container and use the keycloak admin cli tool to change the ssl property:
+* docker exec -it advanced-keycloak-1 /bin/bash
+* cd /opt/bitnami/keycloak/bin
+* kcadm.sh update realms/master -s sslRequired=NONE --server http://localhost:8080/ --realm master --user user --password bitnami
+* kcadm.sh update realms/omlox -s sslRequired=NONE --server http://localhost:8080/ --realm master --user user --password bitnami
+
 While you did all this, you may have looked at the console where you started all the containers and noticed the following error message from within the DeepHub container:
 
 ```Failed to request OpenID configuration from URL http://host.docker.internal/realms/omlox/.well-known/openid-configuration.```
