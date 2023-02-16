@@ -9,13 +9,18 @@ services:
       - POSTGRESQL_DATABASE=bitnami_keycloak
     volumes:
       - 'postgresql_data:/bitnami/postgresql'
+    networks:
+      - deephub-net
 
   keycloak:
     image: docker.io/bitnami/keycloak:20
     depends_on:
       - postgresql
     ports:
+      # make keycloak reachable from host for using the administration console web interface
       - "80:8080"
+    networks:
+      - deephub-net
 
   deephub:
     image: flowcate/deephub:2.2.2
@@ -32,7 +37,8 @@ services:
       - DEEPHUB_HOST=0.0.0.0
       - DEEPHUB_CORS=true
       - DEEPHUB_REQUIRE_AUTHORIZATION=true
-      - DEEPHUB_OPENID_CONFIG_URL=http://host.docker.internal/realms/omlox/.well-known/openid-configuration
+      # work with "direct" connection via the "deephub-net" docker network
+      - DEEPHUB_OPENID_CONFIG_URL=http://keycloak:8080/realms/omlox/.well-known/openid-configuration
       - DEEPHUB_OPENID_CLIENT_NAME=deephub-test-client
       - DEEPHUB_LICENSE_KEY=ca029c0c-d6da-4a92-823b-e36b5ccbad8e
       - SQLITE_TMPDIR=/data
@@ -73,6 +79,8 @@ services:
       - DOCKER_APP_BASE_HREF=/deephub-ui/
       - DOCKER_MAP_UPDATES_PER_SECOND=10
       - DOCKER_USE_AUTH=true
+      # "localhost" has to be used here because these variables are used within the client browser and there, keycloak and UI can be reached
+      # at "localhost" and not as the "keycloak" name valid within the docker network.
       - DOCKER_AUTH_ISSUER=http://localhost/realms/omlox
       - DOCKER_AUTH_REDIRECT_URI=https://localhost/deephub-ui/
       - DOCKER_AUTH_CLIENT_ID=deephub-ui-test-client
