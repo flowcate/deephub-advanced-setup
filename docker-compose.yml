@@ -23,8 +23,8 @@ services:
       - deephub-net
 
   deephub:
-    image: flowcate/deephub:2.2.2
-    container_name: deephub-2.2.2-https-auth
+    image: flowcate/deephub:2.2.3
+    container_name: deephub-2.2.3-https-auth
     restart: unless-stopped
     read_only: true
     logging:
@@ -52,8 +52,8 @@ services:
       - deephub-net
 
   deephub-ui:
-    image: flowcate/deephub-ui:2.2.2
-    container_name: deephub-ui-2.2.2-https-auth
+    image: flowcate/deephub-ui:2.2.3
+    container_name: deephub-ui-2.2.3-https-auth
     tty: true
     stdin_open: true
     read_only: true
@@ -89,7 +89,7 @@ services:
 
   deephub-apache:
     image: httpd:alpine
-    container_name: deephub-apache-2.2.2-https-auth
+    container_name: deephub-apache-2.2.3-https-auth
     restart: unless-stopped
     read_only: true
     logging:
