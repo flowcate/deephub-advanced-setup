@@ -33,7 +33,7 @@ When first starting up the system of five containers, the keycloak instance will
 * Go to the "Role mapping" tab and click "Assign role".
 * Mark the checkbox in front of "deephub-test-role" and click the "Assign" button below all assignable roles.
 
-That's it!
+That's it! In principle, you should now be able to start the setup (more details below) and connect to the DeepHub UI via web browser at https://localhost/deephub-ui.
 
 If you are running this advanced setup example on a dedicated machine outside your local network, keycloak will enforce https and you will not be able to reach it because the SSL port is already occupied by the apache proxy. If this is the case, you can either switch the keycloak container to be reachable at a different port for https or make the apache proxy container listen on a different port or deactivate the SSL enforcement policy of keycloak. For the latter, as you can't reach the UI in this case, login into the keycloak container and use the keycloak admin cli tool to change the ssl property:
 * docker exec -it advanced-keycloak-1 /bin/bash
