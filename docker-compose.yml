@@ -73,17 +73,16 @@ services:
       - "./hub-web/nginx/cache/:/var/cache/nginx"
       - "./hub-web/nginx/webapp/:/webapp"
     environment:
-      - DOCKER_BASE_URL=/deephub/v1
-      - DOCKER_ROOT_URL=/deephub
-      - DOCKER_WEBSOCKET_URL=
-      - DOCKER_APP_BASE_HREF=/deephub-ui/
-      - DOCKER_MAP_UPDATES_PER_SECOND=10
-      - DOCKER_USE_AUTH=true
+      - DEEPHUB_BASE_URL=/deephub/v1
+      - DEEPHUB_ROOT_URL=/deephub
+      - DEEPHUB_WEBSOCKET_URL=
+      - NGINX_BASE_HREF=/deephub-ui/
+      - DEEPHUB_MAP_UPDATES_PER_SECOND=10
       # "localhost" has to be used here because these variables are used within the client browser and there, keycloak and UI can be reached
       # at "localhost" and not as the "keycloak" name valid within the docker network.
-      - DOCKER_AUTH_ISSUER=http://localhost/realms/omlox
-      - DOCKER_AUTH_REDIRECT_URI=https://localhost/deephub-ui/
-      - DOCKER_AUTH_CLIENT_ID=deephub-ui-test-client
+      - DEEPHUB_AUTH_ISSUER=http://localhost/realms/omlox
+      - DEEPHUB_AUTH_REDIRECT_URI=https://localhost/deephub-ui/
+      - DEEPHUB_AUTH_CLIENT_ID=deephub-ui-test-client
     networks:
       - deephub-net
 
