@@ -712,13 +712,13 @@
       "description": "",
       "rootUrl": "",
       "adminUrl": "",
-      "baseUrl": "http:s//localhost/deephub-ui/",
+      "baseUrl": "http:s//localhost/deephub-admin-ui/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "https://localhost/deephub-ui*"
+        "https://localhost/deephub-*"
       ],
       "webOrigins": [
         "*"

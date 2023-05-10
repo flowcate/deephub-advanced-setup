@@ -35,10 +35,10 @@ Here is a description of the required steps:
 * Go to the "Role mapping" tab and click "Assign role".
 * Mark the checkbox in front of "deephub-test-role" and click the "Assign" button below all assignable roles.
 
-That's it! You should now be able to start the setup (more details below) and connect to the DeepHub UI via a web browser at https://localhost/deephub-ui.
+That's it! You should now be able to start the setup (more details below) and connect to the DeepHub UI via a web browser at https://localhost/deephub-admin-ui/ or https://localhost/deephub-kiosk-ui/.
 
 If you are running this advanced setup example on a dedicated machine outside your local network, Keycloak will enforce https and you will not be able to reach it because the SSL port is already occupied by the Apache proxy. If this is the case, you can either switch the keycloak container to be reachable at a different port for https, make the apache proxy container listen on a different port, or deactivate the SSL enforcement policy of Keycloak. For the latter, as you can't reach the UI in this case, log into the Keycloak container and use the keycloak admin cli tool to change the ssl property:
-* docker exec -it advanced-keycloak-1 /bin/bash
+* docker exec -it deephub-advanced-setup-keycloak-1 /bin/bash
 * cd /opt/bitnami/keycloak/bin
 * kcadm.sh update realms/master -s sslRequired=NONE --server http://localhost:8080/ --realm master --user user --password bitnami
 * kcadm.sh update realms/omlox -s sslRequired=NONE --server http://localhost:8080/ --realm master --user user --password bitnami
@@ -55,7 +55,7 @@ If you see this, this is a clear sign that everything is configured correctly.
 
 Note: You may have to stop the system and restart it again because the DeepHub may not have gotten all the latest roles and scopes because the keycloak configuration was ongoing.
 
-In your browser, you may now head over to https://localhost/deephub-ui to access the DeepHub UI. This will cause a warning from your internet browser because this repo only contains a self-signed certificate for the https connection. Accept it within the browser's warning dialog and you should be redirected to the UI and from there immediately to the keycloak authentication request. Enter "deephub-tester" as the username and the password you've chosen and login. You will now be redirected to the DeepHub UI.
+In your browser, you may now head over to https://localhost/deephub-admin-ui/ or https://localhost/deephub-kiosk-ui/ to access the DeepHub UI. This will cause a warning from your internet browser because this repo only contains a self-signed certificate for the https connection. Accept it within the browser's warning dialog and you should be redirected to the UI and from there immediately to the keycloak authentication request. Enter "deephub-tester" as the username and the password you've chosen and login. You will now be redirected to the DeepHub UI.
 
 Have fun with the DeepHub!
 

@@ -51,9 +51,9 @@ services:
     networks:
       - deephub-net
 
-  deephub-ui:
+  deephub-admin-ui:
     image: flowcate/deephub-ui:admin-2.3.0-nginx-1.24.0
-    container_name: deephub-ui-2.3.0-https-auth
+    container_name: deephub-admin-ui-2.3.0-https-auth
     tty: true
     stdin_open: true
     read_only: true
@@ -73,15 +73,43 @@ services:
       - "./hub-web/nginx/cache/:/var/cache/nginx"
       - "./hub-web/nginx/webapp/:/webapp"
     environment:
-      - DEEPHUB_BASE_URL=/deephub/v1
       - DEEPHUB_ROOT_URL=/deephub
-      - DEEPHUB_WEBSOCKET_URL=
-      - NGINX_BASE_HREF=/deephub-ui/
+      - NGINX_BASE_HREF=/deephub-admin-ui/
       - DEEPHUB_MAP_UPDATES_PER_SECOND=10
       # "localhost" has to be used here because these variables are used within the client browser and there, keycloak and UI can be reached
       # at "localhost" and not as the "keycloak" name valid within the docker network.
       - DEEPHUB_AUTH_ISSUER=http://localhost/realms/omlox
-      - DEEPHUB_AUTH_REDIRECT_URI=https://localhost/deephub-ui/
+      - DEEPHUB_AUTH_REDIRECT_URI=https://localhost/deephub-admin-ui/
+      - DEEPHUB_AUTH_CLIENT_ID=deephub-ui-test-client
+    networks:
+      - deephub-net
+
+  deephub-kiosk-ui:
+    image: flowcate/deephub-ui:kiosk-2.3.0-nginx-1.24.0
+    container_name: deephub-kiosk-ui-2.3.0
+    tty: true
+    stdin_open: true
+    read_only: false
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "10m"
+    depends_on:
+      - deephub
+    restart: unless-stopped
+    ports:
+      - "8080"
+    volumes:
+      - "./hub-web/:/tmp/run"
+      - "./hub-web/nginx/log/:/var/log/nginx"
+      - "./hub-web/nginx/cache/:/var/cache/nginx"
+      - "./hub-web/nginx/conf.d/:/etc/nginx/conf.d"
+    environment:
+      - NGINX_BASE_HREF=/deephub-kiosk-ui/
+      - DEEPHUB_ROOT_URL=/deephub
+      - DEEPHUB_AUTH_ISSUER=http://localhost/realms/omlox
+      - DEEPHUB_AUTH_REDIRECT_URI=https://localhost/deephub-kiosk-ui/
       - DEEPHUB_AUTH_CLIENT_ID=deephub-ui-test-client
     networks:
       - deephub-net
@@ -97,7 +125,7 @@ services:
         max-file: "2"
         max-size: "10m"
     depends_on:
-      - deephub-ui
+      - deephub-admin-ui
     ports:
       - "443:443"
     volumes:
