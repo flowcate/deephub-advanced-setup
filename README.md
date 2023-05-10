@@ -19,7 +19,16 @@ This project provides a completely configured “system” consisting of a Keycl
 
 When first starting up the system of five containers, the Keycloak instance will create DB tables and this may take a while. After that table creation step, Keycloak is still in a virgin state and needs to have the correct clients, client scopes, roles and users set. You can do this by referencing our documentation, or by importing the "omlox-realm.json" file that is part of this repository (it includes almost all of the required settings).
 
-Here is a description of the required steps:
+Furthermore, keycloak usually requires SSL to be enabled (which is the default) but what hinders this overall setup to work because the Apache Proxy server acquires the traditional SSL/https port of 443 and therefore the port can't be used by keycloak. In this example, for simplification reasons, the keycloak needs to run on http only and the enforced SSL connection needs to be reconfigured. Let's start by doing this first:
+
+Log into the Keycloak container and use the keycloak admin cli tool to change the ssl property:
+* docker exec -it deephub-advanced-setup-keycloak-1 /bin/bash
+* cd /opt/bitnami/keycloak/bin
+* kcadm.sh update realms/master -s sslRequired=NONE --server http://localhost:8080/ --realm master --user user --password bitnami
+* kcadm.sh update realms/omlox -s sslRequired=NONE --server http://localhost:8080/ --realm master --user user --password bitnami
+
+
+Now let's go on configuring the overall system::
 
 * Start the system with docker compose up
 * In a browser, open http://localhost to access your new local Keycloak instance (if this does not work, wait for a minute - Keycloak is likely still in the process of creating the necessary DB tables)
@@ -36,12 +45,6 @@ Here is a description of the required steps:
 * Mark the checkbox in front of "deephub-test-role" and click the "Assign" button below all assignable roles.
 
 That's it! You should now be able to start the setup (more details below) and connect to the DeepHub UI via a web browser at https://localhost/deephub-admin-ui/ or https://localhost/deephub-kiosk-ui/.
-
-If you are running this advanced setup example on a dedicated machine outside your local network, Keycloak will enforce https and you will not be able to reach it because the SSL port is already occupied by the Apache proxy. If this is the case, you can either switch the keycloak container to be reachable at a different port for https, make the apache proxy container listen on a different port, or deactivate the SSL enforcement policy of Keycloak. For the latter, as you can't reach the UI in this case, log into the Keycloak container and use the keycloak admin cli tool to change the ssl property:
-* docker exec -it deephub-advanced-setup-keycloak-1 /bin/bash
-* cd /opt/bitnami/keycloak/bin
-* kcadm.sh update realms/master -s sslRequired=NONE --server http://localhost:8080/ --realm master --user user --password bitnami
-* kcadm.sh update realms/omlox -s sslRequired=NONE --server http://localhost:8080/ --realm master --user user --password bitnami
 
 While you did all this, you may have looked at the console where you started all the containers and noticed the following error message from within the DeepHub container:
 
