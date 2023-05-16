@@ -78,4 +78,4 @@ Now you have your own running DeepHub® instance that can be accessed with any m
 
 To complement the DeepHub UI shown above, you may also make API calls to the [DeepHub REST API](https://docs.deephub.io/api_reference/restApi.html#/deep-hub-api-rest-api) while running the DeepHub locally. This can be done with a tool such as Postman or cURL BUT you need to add an access token to each request due to the enabled authorization mechanism.
 
-For more information, visit [docs.deephub.io](https://docs.deephub.io/installation_instructions/).
+For more information, visit [docs.deephub.io](https://docs.deephub.io/docs/testing-deephub/running_dh_locally/).
