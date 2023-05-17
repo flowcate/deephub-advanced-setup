@@ -40,7 +40,7 @@ services:
       # work with "direct" connection via the "deephub-net" docker network
       - DEEPHUB_OPENID_CONFIG_URL=http://keycloak:8080/realms/omlox/.well-known/openid-configuration
       - DEEPHUB_OPENID_CLIENT_NAME=deephub-test-client
-      - DEEPHUB_LICENSE_KEY=75c23c4b-8ae3-43ce-a5b1-dc7267b55ece
+      - DEEPHUB_LICENSE_KEY=4597ceda-83e2-43bb-a3aa-61b9450fad74
       - SQLITE_TMPDIR=/data
     depends_on:
       - keycloak
@@ -86,7 +86,7 @@ services:
 
   deephub-kiosk-ui:
     image: flowcate/deephub-ui:kiosk-2.3.0-nginx-1.24.0
-    container_name: deephub-kiosk-ui-2.3.0
+    container_name: deephub-kiosk-ui-2.3.0-https-auth
     tty: true
     stdin_open: true
     read_only: false
@@ -126,6 +126,7 @@ services:
         max-size: "10m"
     depends_on:
       - deephub-admin-ui
+      - deephub-kiosk-ui
     ports:
       - "443:443"
     volumes:
