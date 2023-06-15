@@ -7,9 +7,9 @@
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
   "refreshTokenMaxReuse": 0,
-  "accessTokenLifespan": 300,
+  "accessTokenLifespan": 60,
   "accessTokenLifespanForImplicitFlow": 900,
-  "ssoSessionIdleTimeout": 1800,
+  "ssoSessionIdleTimeout": 120,
   "ssoSessionMaxLifespan": 36000,
   "ssoSessionIdleTimeoutRememberMe": 0,
   "ssoSessionMaxLifespanRememberMe": 0,
@@ -66,12 +66,7 @@
         "id": "f291ae4a-6b17-4f05-b399-e970a2ca11ca",
         "name": "deephub-test-role",
         "description": "",
-        "composite": true,
-        "composites": {
-          "realm": [
-            "deephub-ui-test-role"
-          ]
-        },
+        "composite": false,
         "clientRole": false,
         "containerId": "59748e51-856c-4a55-a9a6-3fed30e7a4aa",
         "attributes": {}
@@ -80,15 +75,6 @@
         "id": "57d7e24c-19a6-4b98-b851-650a1053491c",
         "name": "offline_access",
         "description": "${role_offline-access}",
-        "composite": false,
-        "clientRole": false,
-        "containerId": "59748e51-856c-4a55-a9a6-3fed30e7a4aa",
-        "attributes": {}
-      },
-      {
-        "id": "041603c5-c326-4367-ab0a-9ef50ab9739e",
-        "name": "deephub-ui-test-role",
-        "description": "",
         "composite": false,
         "clientRole": false,
         "containerId": "59748e51-856c-4a55-a9a6-3fed30e7a4aa",
@@ -105,6 +91,8 @@
       }
     ],
     "client": {
+      "deephub-kiosk-ui-test-client": [],
+      "deephub-admin-ui-test-client": [],
       "realm-management": [
         {
           "id": "5f83f6cd-7a04-494f-a667-43e5d8880313",
@@ -321,7 +309,6 @@
       "security-admin-console": [],
       "admin-cli": [],
       "account-console": [],
-      "deephub-ui-test-client": [],
       "broker": [
         {
           "id": "aa87ae62-4a8e-4ec1-9c37-2e6dbbd589a4",
@@ -443,8 +430,8 @@
   "otpPolicyPeriod": 30,
   "otpPolicyCodeReusable": false,
   "otpSupportedApplications": [
-    "totpAppGoogleName",
-    "totpAppFreeOTPName"
+    "totpAppFreeOTPName",
+    "totpAppGoogleName"
   ],
   "webAuthnPolicyRpEntityName": "keycloak",
   "webAuthnPolicySignatureAlgorithms": [
@@ -651,6 +638,102 @@
       ]
     },
     {
+      "id": "f7c1b318-8753-470c-be02-89614d45409b",
+      "clientId": "deephub-admin-ui-test-client",
+      "name": "",
+      "description": "",
+      "rootUrl": "",
+      "adminUrl": "",
+      "baseUrl": "https://localhost/deephub-admin-ui/",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": false,
+      "clientAuthenticatorType": "client-secret",
+      "redirectUris": [
+        "https://localhost/deephub-admin-ui/*"
+      ],
+      "webOrigins": [
+        "*"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "oidc.ciba.grant.enabled": "false",
+        "backchannel.logout.session.required": "true",
+        "login_theme": "keycloak",
+        "post.logout.redirect.uris": "+",
+        "display.on.consent.screen": "false",
+        "oauth2.device.authorization.grant.enabled": "false",
+        "backchannel.logout.revoke.offline.tokens": "false"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
+      "defaultClientScopes": [
+        "deephub-ui-scope",
+        "roles",
+        "profile",
+        "email"
+      ],
+      "optionalClientScopes": []
+    },
+    {
+      "id": "23b41e74-9b92-4a2f-8216-409c803b1558",
+      "clientId": "deephub-kiosk-ui-test-client",
+      "name": "",
+      "description": "",
+      "rootUrl": "",
+      "adminUrl": "",
+      "baseUrl": "https://localhost/deephub-kiosk-ui/",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": false,
+      "clientAuthenticatorType": "client-secret",
+      "redirectUris": [
+        "https://localhost/deephub-kiosk-ui/*"
+      ],
+      "webOrigins": [
+        "*"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "oidc.ciba.grant.enabled": "false",
+        "backchannel.logout.session.required": "true",
+        "login_theme": "keycloak",
+        "post.logout.redirect.uris": "+",
+        "display.on.consent.screen": "false",
+        "oauth2.device.authorization.grant.enabled": "false",
+        "backchannel.logout.revoke.offline.tokens": "false"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
+      "defaultClientScopes": [
+        "deephub-ui-scope",
+        "roles",
+        "profile",
+        "email"
+      ],
+      "optionalClientScopes": []
+    },
+    {
       "id": "db8b0139-71ea-47de-b96b-93173184a197",
       "clientId": "deephub-test-client",
       "name": "",
@@ -693,62 +776,6 @@
       "defaultClientScopes": [
         "web-origins",
         "acr",
-        "deephub-test-scope",
-        "roles",
-        "profile",
-        "email"
-      ],
-      "optionalClientScopes": [
-        "address",
-        "phone",
-        "offline_access",
-        "microprofile-jwt"
-      ]
-    },
-    {
-      "id": "f7c1b318-8753-470c-be02-89614d45409b",
-      "clientId": "deephub-ui-test-client",
-      "name": "",
-      "description": "",
-      "rootUrl": "",
-      "adminUrl": "",
-      "baseUrl": "http:s//localhost/deephub-admin-ui/",
-      "surrogateAuthRequired": false,
-      "enabled": true,
-      "alwaysDisplayInConsole": false,
-      "clientAuthenticatorType": "client-secret",
-      "redirectUris": [
-        "https://localhost/deephub-*"
-      ],
-      "webOrigins": [
-        "*"
-      ],
-      "notBefore": 0,
-      "bearerOnly": false,
-      "consentRequired": false,
-      "standardFlowEnabled": true,
-      "implicitFlowEnabled": false,
-      "directAccessGrantsEnabled": true,
-      "serviceAccountsEnabled": false,
-      "publicClient": true,
-      "frontchannelLogout": true,
-      "protocol": "openid-connect",
-      "attributes": {
-        "oidc.ciba.grant.enabled": "false",
-        "backchannel.logout.session.required": "true",
-        "login_theme": "keycloak",
-        "post.logout.redirect.uris": "+",
-        "display.on.consent.screen": "false",
-        "oauth2.device.authorization.grant.enabled": "false",
-        "backchannel.logout.revoke.offline.tokens": "false"
-      },
-      "authenticationFlowBindingOverrides": {},
-      "fullScopeAllowed": true,
-      "nodeReRegistrationTimeout": -1,
-      "defaultClientScopes": [
-        "web-origins",
-        "acr",
-        "deephub-test-scope",
         "roles",
         "profile",
         "email"
@@ -934,46 +961,6 @@
       ]
     },
     {
-      "id": "a7185c52-9455-4e64-b882-58e114f8246c",
-      "name": "deephub-test-scope",
-      "description": "",
-      "protocol": "openid-connect",
-      "attributes": {
-        "include.in.token.scope": "true",
-        "display.on.consent.screen": "true",
-        "gui.order": "",
-        "consent.screen.text": ""
-      },
-      "protocolMappers": [
-        {
-          "id": "bf725dfd-cb76-4325-a401-41e938a1e005",
-          "name": "deephub-ui-test-audience-mapper",
-          "protocol": "openid-connect",
-          "protocolMapper": "oidc-audience-mapper",
-          "consentRequired": false,
-          "config": {
-            "included.client.audience": "deephub-ui-test-client",
-            "id.token.claim": "true",
-            "access.token.claim": "true",
-            "userinfo.token.claim": "true"
-          }
-        },
-        {
-          "id": "5f822558-21b5-4f20-bf43-617ba16da689",
-          "name": "deephub-test-audience-mapper",
-          "protocol": "openid-connect",
-          "protocolMapper": "oidc-audience-mapper",
-          "consentRequired": false,
-          "config": {
-            "included.client.audience": "deephub-test-client",
-            "id.token.claim": "true",
-            "access.token.claim": "true",
-            "userinfo.token.claim": "true"
-          }
-        }
-      ]
-    },
-    {
       "id": "f7290893-143f-4b3c-be59-cbae4c41ed9f",
       "name": "roles",
       "description": "OpenID Connect scope for add user roles to the access token",
@@ -1033,6 +1020,27 @@
       }
     },
     {
+      "id": "67cd4a6c-6202-49be-ba70-d6c5eafa3ebb",
+      "name": "web-origins",
+      "description": "OpenID Connect scope for add allowed web origins to the access token",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "false",
+        "display.on.consent.screen": "false",
+        "consent.screen.text": ""
+      },
+      "protocolMappers": [
+        {
+          "id": "5ff96949-26c4-4f09-b021-c2f83dc4a472",
+          "name": "allowed web origins",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-allowed-origins-mapper",
+          "consentRequired": false,
+          "config": {}
+        }
+      ]
+    },
+    {
       "id": "3d142e89-eea3-4fc6-8992-0b840c813104",
       "name": "address",
       "description": "OpenID Connect built-in scope: address",
@@ -1060,27 +1068,6 @@
             "access.token.claim": "true",
             "user.attribute.locality": "locality"
           }
-        }
-      ]
-    },
-    {
-      "id": "67cd4a6c-6202-49be-ba70-d6c5eafa3ebb",
-      "name": "web-origins",
-      "description": "OpenID Connect scope for add allowed web origins to the access token",
-      "protocol": "openid-connect",
-      "attributes": {
-        "include.in.token.scope": "false",
-        "display.on.consent.screen": "false",
-        "consent.screen.text": ""
-      },
-      "protocolMappers": [
-        {
-          "id": "5ff96949-26c4-4f09-b021-c2f83dc4a472",
-          "name": "allowed web origins",
-          "protocol": "openid-connect",
-          "protocolMapper": "oidc-allowed-origins-mapper",
-          "consentRequired": false,
-          "config": {}
         }
       ]
     },
@@ -1372,6 +1359,32 @@
       ]
     },
     {
+      "id": "ce7a0f15-e2d8-4e39-8170-5a866281e8ea",
+      "name": "deephub-ui-scope",
+      "description": "",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "true",
+        "gui.order": "",
+        "consent.screen.text": ""
+      },
+      "protocolMappers": [
+        {
+          "id": "a3d3127c-4bd7-4d95-aa6f-27e38120e1fe",
+          "name": "deephub-test-audience-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "deephub-test-client",
+            "id.token.claim": "false",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
       "id": "100b3e79-4b67-4f70-89be-6302927b5efa",
       "name": "email",
       "description": "OpenID Connect built-in scope: email",
@@ -1505,14 +1518,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
+            "oidc-usermodel-attribute-mapper",
+            "oidc-address-mapper",
+            "oidc-full-name-mapper",
             "oidc-usermodel-property-mapper",
+            "saml-role-list-mapper",
             "saml-user-property-mapper",
             "saml-user-attribute-mapper",
-            "oidc-full-name-mapper",
-            "oidc-usermodel-attribute-mapper",
-            "oidc-sha256-pairwise-sub-mapper",
-            "saml-role-list-mapper",
-            "oidc-address-mapper"
+            "oidc-sha256-pairwise-sub-mapper"
           ]
         }
       },
@@ -1532,14 +1545,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
+            "oidc-sha256-pairwise-sub-mapper",
             "oidc-usermodel-property-mapper",
             "saml-user-property-mapper",
             "saml-user-attribute-mapper",
             "oidc-address-mapper",
             "saml-role-list-mapper",
-            "oidc-sha256-pairwise-sub-mapper",
-            "oidc-usermodel-attribute-mapper",
-            "oidc-full-name-mapper"
+            "oidc-full-name-mapper",
+            "oidc-usermodel-attribute-mapper"
           ]
         }
       },
@@ -1558,7 +1571,7 @@
     ],
     "org.keycloak.userprofile.UserProfileProvider": [
       {
-        "id": "bae864e7-f17f-4e32-82b0-803555bc9931",
+        "id": "9e05053e-e7eb-4a72-aff3-befbf61d32ff",
         "providerId": "declarative-user-profile",
         "subComponents": {},
         "config": {}
@@ -1621,7 +1634,7 @@
   "supportedLocales": [],
   "authenticationFlows": [
     {
-      "id": "768e1758-3090-45c0-b0e7-9d68b0f80b21",
+      "id": "8256e53d-7934-4917-8f12-d33e8095043a",
       "alias": "Account verification options",
       "description": "Method with which to verity the existing account",
       "providerId": "basic-flow",
@@ -1647,7 +1660,7 @@
       ]
     },
     {
-      "id": "a8371815-ebdc-4391-b47d-548bc2f2c582",
+      "id": "f94323e7-13d4-4a67-92a8-508140cab435",
       "alias": "Authentication Options",
       "description": "Authentication options.",
       "providerId": "basic-flow",
@@ -1681,7 +1694,7 @@
       ]
     },
     {
-      "id": "b0c5ca66-1de6-44c3-ace4-83c87ad28be2",
+      "id": "5b1f3c00-83fa-4653-ba86-4d0934d4db3a",
       "alias": "Browser - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1707,7 +1720,7 @@
       ]
     },
     {
-      "id": "7b06591a-c604-474f-84d9-332faebd9ac2",
+      "id": "2312a0bc-a255-452e-b5b0-aa5dde3dbf0b",
       "alias": "Direct Grant - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1733,7 +1746,7 @@
       ]
     },
     {
-      "id": "a4c2a072-12d6-429a-a1c4-8e74486dc91a",
+      "id": "2d97ca80-4025-497a-99da-ac3633a0a523",
       "alias": "First broker login - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -1759,7 +1772,7 @@
       ]
     },
     {
-      "id": "c01898f4-15ae-40dc-b265-bd790ed5ab26",
+      "id": "3c7d5af6-bec8-4482-8487-8f25585bd805",
       "alias": "Handle Existing Account",
       "description": "Handle what to do if there is existing account with same email/username like authenticated identity provider",
       "providerId": "basic-flow",
@@ -1785,7 +1798,7 @@
       ]
     },
     {
-      "id": "7487389e-03a1-4405-9fa4-bf3e97b5de16",
+      "id": "25f2a35b-c9ba-42a1-9679-f5a93627a4f6",
       "alias": "Reset - Conditional OTP",
       "description": "Flow to determine if the OTP should be reset or not. Set to REQUIRED to force.",
       "providerId": "basic-flow",
@@ -1811,7 +1824,7 @@
       ]
     },
     {
-      "id": "38285a71-eced-4702-9697-8ed45bed49bf",
+      "id": "1e63f62a-0eaf-46cf-9330-24aadec0f9d9",
       "alias": "User creation or linking",
       "description": "Flow for the existing/non-existing user alternatives",
       "providerId": "basic-flow",
@@ -1838,7 +1851,7 @@
       ]
     },
     {
-      "id": "f744d884-f955-4ea3-9c9e-22f2fe8b6396",
+      "id": "6725cc7b-4407-43d3-b526-54b036b4bb9e",
       "alias": "Verify Existing Account by Re-authentication",
       "description": "Reauthentication of existing account",
       "providerId": "basic-flow",
@@ -1864,7 +1877,7 @@
       ]
     },
     {
-      "id": "88ee5fbf-47be-4cce-9d21-54d1d82cedad",
+      "id": "d06769e0-7911-44ce-97b2-f0936953e458",
       "alias": "browser",
       "description": "browser based authentication",
       "providerId": "basic-flow",
@@ -1906,7 +1919,7 @@
       ]
     },
     {
-      "id": "855976ce-333b-43de-8422-e69625ac091f",
+      "id": "03c2201e-9c75-4189-a95c-cdcdfa12d599",
       "alias": "clients",
       "description": "Base authentication for clients",
       "providerId": "client-flow",
@@ -1948,7 +1961,7 @@
       ]
     },
     {
-      "id": "30b1ac81-e5b5-4022-be7c-8fac5e8bf805",
+      "id": "3ad7a70d-96de-4c8a-bf37-a9c6938d6923",
       "alias": "direct grant",
       "description": "OpenID Connect Resource Owner Grant",
       "providerId": "basic-flow",
@@ -1982,7 +1995,7 @@
       ]
     },
     {
-      "id": "8e286222-034a-4b40-829f-4bd3f6e1439f",
+      "id": "229e8ec8-f8c0-42a2-86b4-1de54a7a76c3",
       "alias": "docker auth",
       "description": "Used by Docker clients to authenticate against the IDP",
       "providerId": "basic-flow",
@@ -2000,7 +2013,7 @@
       ]
     },
     {
-      "id": "20d54d84-0001-407e-b642-77eeea5c28d5",
+      "id": "d1344e14-877b-4392-87a0-dbb1bf28aeee",
       "alias": "first broker login",
       "description": "Actions taken after first broker login with identity provider account, which is not yet linked to any Keycloak account",
       "providerId": "basic-flow",
@@ -2027,7 +2040,7 @@
       ]
     },
     {
-      "id": "4c0dfc20-b878-44ab-bc61-3cfee95f2aff",
+      "id": "7b9a7be0-a7db-4eea-b64f-5f342a51fc1d",
       "alias": "forms",
       "description": "Username, password, otp and other auth forms.",
       "providerId": "basic-flow",
@@ -2053,7 +2066,7 @@
       ]
     },
     {
-      "id": "3f8e7164-c1c5-4736-a362-f8ed1a952528",
+      "id": "14c53f17-f480-4060-9e9e-ac49cdcd4027",
       "alias": "http challenge",
       "description": "An authentication flow based on challenge-response HTTP Authentication Schemes",
       "providerId": "basic-flow",
@@ -2079,7 +2092,7 @@
       ]
     },
     {
-      "id": "c5b22674-9626-4093-ad90-c90178d5e330",
+      "id": "584dfcb8-2915-47d4-9002-1cf766449038",
       "alias": "registration",
       "description": "registration flow",
       "providerId": "basic-flow",
@@ -2098,7 +2111,7 @@
       ]
     },
     {
-      "id": "9314f2d5-4a41-4ec6-af33-af52fe416941",
+      "id": "611abcaf-c814-42b0-89af-189302db4ef5",
       "alias": "registration form",
       "description": "registration form",
       "providerId": "form-flow",
@@ -2140,7 +2153,7 @@
       ]
     },
     {
-      "id": "489351e4-cd14-49c8-a56a-a6f2f7ac82ba",
+      "id": "f93ff0f3-75f3-4265-aa46-286cced76229",
       "alias": "reset credentials",
       "description": "Reset credentials for a user if they forgot their password or something",
       "providerId": "basic-flow",
@@ -2182,7 +2195,7 @@
       ]
     },
     {
-      "id": "7d17d1f2-8ed5-4793-949d-6aef59dd1a9c",
+      "id": "3ab3bffa-ac3d-4bc0-bfa4-118284b924f2",
       "alias": "saml ecp",
       "description": "SAML ECP Profile Authentication Flow",
       "providerId": "basic-flow",
@@ -2202,14 +2215,14 @@
   ],
   "authenticatorConfig": [
     {
-      "id": "68df484f-601d-4324-b16b-451850929507",
+      "id": "69dfe448-d0e3-45a0-b6d0-7c10c9838eb6",
       "alias": "create unique user config",
       "config": {
         "require.password.update.after.registration": "false"
       }
     },
     {
-      "id": "72867c42-cc87-4e1a-ae71-63e730855fc0",
+      "id": "6912ea92-b88c-4058-a8f3-70106069c63c",
       "alias": "review profile config",
       "config": {
         "update.profile.on.first.login": "missing"
@@ -2311,17 +2324,21 @@
     "oauth2DevicePollingInterval": "5",
     "clientOfflineSessionMaxLifespan": "0",
     "clientSessionIdleTimeout": "0",
+    "actionTokenGeneratedByUserLifespan-execute-actions": "",
+    "actionTokenGeneratedByUserLifespan-verify-email": "",
     "clientOfflineSessionIdleTimeout": "0",
+    "actionTokenGeneratedByUserLifespan-reset-credentials": "",
     "cibaInterval": "5",
     "realmReusableOtpCode": "false",
     "cibaExpiresIn": "120",
     "oauth2DeviceCodeLifespan": "600",
+    "actionTokenGeneratedByUserLifespan-idp-verify-account-via-email": "",
     "parRequestUriLifespan": "60",
     "clientSessionMaxLifespan": "0",
     "frontendUrl": "",
     "acr.loa.map": "{}"
   },
-  "keycloakVersion": "20.0.3",
+  "keycloakVersion": "20.0.5",
   "userManagedAccessAllowed": false,
   "clientProfiles": {
     "profiles": []
