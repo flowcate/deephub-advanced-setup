@@ -80,7 +80,7 @@ services:
       # at "localhost" and not as the "keycloak" name valid within the docker network.
       - DEEPHUB_AUTH_ISSUER=http://localhost/realms/omlox
       - DEEPHUB_AUTH_REDIRECT_URI=https://localhost/deephub-admin-ui/
-      - DEEPHUB_AUTH_CLIENT_ID=deephub-ui-test-client
+      - DEEPHUB_AUTH_CLIENT_ID=deephub-admin-ui-test-client
     networks:
       - deephub-net
 
@@ -110,7 +110,7 @@ services:
       - DEEPHUB_ROOT_URL=/deephub
       - DEEPHUB_AUTH_ISSUER=http://localhost/realms/omlox
       - DEEPHUB_AUTH_REDIRECT_URI=https://localhost/deephub-kiosk-ui/
-      - DEEPHUB_AUTH_CLIENT_ID=deephub-ui-test-client
+      - DEEPHUB_AUTH_CLIENT_ID=deephub-kiosk-ui-test-client
     networks:
       - deephub-net
 
