@@ -23,8 +23,8 @@ services:
       - deephub-net
 
   deephub:
-    image: flowcate/deephub:2.3.1
-    container_name: deephub-2.3.1-https-auth
+    image: flowcate/deephub:2.3.2
+    container_name: deephub-2.3.2-https-auth
     restart: unless-stopped
     read_only: true
     logging:
@@ -52,8 +52,8 @@ services:
       - deephub-net
 
   deephub-admin-ui:
-    image: flowcate/deephub-ui:admin-2.3.1-nginx-1.24.0
-    container_name: deephub-admin-ui-2.3.1-https-auth
+    image: flowcate/deephub-ui:admin-2.3.2-nginx-1.25.1
+    container_name: deephub-admin-ui-2.3.2-https-auth
     tty: true
     stdin_open: true
     read_only: true
@@ -85,8 +85,8 @@ services:
       - deephub-net
 
   deephub-kiosk-ui:
-    image: flowcate/deephub-ui:kiosk-2.3.1-nginx-1.24.0
-    container_name: deephub-kiosk-ui-2.3.1-https-auth
+    image: flowcate/deephub-ui:kiosk-2.3.2-nginx-1.25.1
+    container_name: deephub-kiosk-ui-2.3.2-https-auth
     tty: true
     stdin_open: true
     read_only: false
@@ -116,7 +116,7 @@ services:
 
   deephub-apache:
     image: httpd:alpine
-    container_name: deephub-apache-2.3.1-https-auth
+    container_name: deephub-apache-2.3.2-https-auth
     restart: unless-stopped
     read_only: true
     logging:
