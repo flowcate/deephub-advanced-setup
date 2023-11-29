@@ -40,7 +40,7 @@ services:
       # work with "direct" connection via the "deephub-net" docker network
       - DEEPHUB_OPENID_CONFIG_URL=http://keycloak:8080/realms/omlox/.well-known/openid-configuration
       - DEEPHUB_OPENID_CLIENT_NAME=deephub-test-client
-      - DEEPHUB_LICENSE_KEY=b6dfa7d0-00d8-4cd3-a35a-e123238137e4
+      - DEEPHUB_LICENSE_KEY=6a3826d6-89d2-4091-a5ab-b0f126a114dc
       - SQLITE_TMPDIR=/data
     depends_on:
       - keycloak
