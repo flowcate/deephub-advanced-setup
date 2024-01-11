@@ -13,7 +13,7 @@ services:
       - deephub-net
 
   keycloak:
-    image: docker.io/bitnami/keycloak:20
+    image: docker.io/bitnami/keycloak:23
     depends_on:
       - postgresql
     ports:
