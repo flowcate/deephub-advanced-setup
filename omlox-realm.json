@@ -91,8 +91,7 @@
       }
     ],
     "client": {
-      "deephub-kiosk-ui-test-client": [],
-      "deephub-admin-ui-test-client": [],
+      "deephub-ui-test-client": [],
       "realm-management": [
         {
           "id": "5f83f6cd-7a04-494f-a667-43e5d8880313",
@@ -643,73 +642,18 @@
     },
     {
       "id": "f7c1b318-8753-470c-be02-89614d45409b",
-      "clientId": "deephub-admin-ui-test-client",
+      "clientId": "deephub-ui-test-client",
       "name": "",
       "description": "",
       "rootUrl": "",
       "adminUrl": "",
-      "baseUrl": "https://localhost/deephub-admin-ui/",
+      "baseUrl": "https://localhost/deephub-ui/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "https://localhost/deephub-admin-ui/*"
-      ],
-      "webOrigins": [
-        "*"
-      ],
-      "notBefore": 0,
-      "bearerOnly": false,
-      "consentRequired": false,
-      "standardFlowEnabled": true,
-      "implicitFlowEnabled": false,
-      "directAccessGrantsEnabled": true,
-      "serviceAccountsEnabled": false,
-      "publicClient": true,
-      "frontchannelLogout": true,
-      "protocol": "openid-connect",
-      "attributes": {
-        "login_theme": "keycloak",
-        "post.logout.redirect.uris": "+",
-        "oauth2.device.authorization.grant.enabled": "false",
-        "backchannel.logout.revoke.offline.tokens": "false",
-        "use.refresh.tokens": "true",
-        "oidc.ciba.grant.enabled": "false",
-        "exclude.issuer.from.auth.response": "true",
-        "backchannel.logout.session.required": "true",
-        "client_credentials.use_refresh_token": "false",
-        "acr.loa.map": "{}",
-        "require.pushed.authorization.requests": "false",
-        "tls.client.certificate.bound.access.tokens": "false",
-        "display.on.consent.screen": "false",
-        "token.response.type.bearer.lower-case": "false"
-      },
-      "authenticationFlowBindingOverrides": {},
-      "fullScopeAllowed": true,
-      "nodeReRegistrationTimeout": -1,
-      "defaultClientScopes": [
-        "deephub-ui-scope",
-        "roles",
-        "profile",
-        "email"
-      ],
-      "optionalClientScopes": []
-    },
-    {
-      "id": "23b41e74-9b92-4a2f-8216-409c803b1558",
-      "clientId": "deephub-kiosk-ui-test-client",
-      "name": "",
-      "description": "",
-      "rootUrl": "",
-      "adminUrl": "",
-      "baseUrl": "https://localhost/deephub-kiosk-ui/",
-      "surrogateAuthRequired": false,
-      "enabled": true,
-      "alwaysDisplayInConsole": false,
-      "clientAuthenticatorType": "client-secret",
-      "redirectUris": [
-        "https://localhost/deephub-kiosk-ui/*"
+        "https://localhost/deephub-ui/*"
       ],
       "webOrigins": [
         "*"

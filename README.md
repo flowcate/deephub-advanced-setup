@@ -12,8 +12,8 @@ This project provides a completely configured “system” consisting of a Keycl
 * [Docker](https://docs.docker.com/engine/install/)
 * [Docker Compose](https://docs.docker.com/compose/install/)
 
-|:point_up: | We only support the operation of a DeepHub docker image in the native version for a CPU. On Windows and Linux this is typically the Intel x86_64 version, same for Intel-based macOS devices. In case you have a new ARM-based macOS device, the native ARM docker image should be pulled automatically. 
-|-----------|:---------------------------------------------------------------------------------------------------------------------------|
+| :point_up: | We only support the operation of a DeepHub docker image in the native version for a CPU. On Windows and Linux this is typically the Intel x86_64 version, same for Intel-based macOS devices. In case you have a new ARM-based macOS device, the native ARM docker image should be pulled automatically. |
+| ---------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ## Running the application for the first time
 
@@ -25,8 +25,6 @@ Log into the Keycloak container and use the keycloak admin cli tool to change th
 * docker exec -it deephub-advanced-setup-keycloak-1 /bin/bash
 * cd /opt/bitnami/keycloak/bin
 * kcadm.sh update realms/master -s sslRequired=NONE --server http://localhost:8080/ --realm master --user user --password bitnami
-* kcadm.sh update realms/omlox -s sslRequired=NONE --server http://localhost:8080/ --realm master --user user --password bitnami
-
 
 Now let's go on configuring the overall system::
 
@@ -38,13 +36,17 @@ Now let's go on configuring the overall system::
   * On the top left, open the drop down menu where the current realm "master" is visible.
   * Click on "Create Realm".
   * Click the browse button to import the omlox-realm.json file from this repo.
+  * Change the ssl property for the newly created realm:
+    * docker exec -it deephub-advanced-setup-keycloak-1 /bin/bash
+    * cd /opt/bitnami/keycloak/bin
+    * kcadm.sh update realms/omlox -s sslRequired=NONE --server http://localhost:8080/ --realm master --user user --password bitnami
 * Click "Users" in the vertical left main menu to add a new user.
 * Choose "Add User" and create a new user named "deephub-tester" (the rest of this example relies on it)
 * Set a password you want to use for this user in the "Credentials" tab of the newly created user. Disable the "Temporary" option to just keep the new password at the next login.
 * Go to the "Role mapping" tab and click "Assign role".
 * Mark the checkbox in front of "deephub-test-role" and click the "Assign" button below all assignable roles.
 
-That's it! You should now be able to start the setup (more details below) and connect to the DeepHub UI via a web browser at https://localhost/deephub-admin-ui/ or https://localhost/deephub-kiosk-ui/.
+That's it! You should now be able to start the setup (more details below) and connect to the DeepHub UI via a web browser at https://localhost/deephub-ui/admin/ or https://localhost/deephub-ui/.
 
 While you did all this, you may have looked at the console where you started all the containers and noticed the following error message from within the DeepHub container:
 
@@ -58,7 +60,7 @@ If you see this, this is a clear sign that everything is configured correctly.
 
 Note: You may have to stop the system and restart it again because the DeepHub may not have gotten all the latest roles and scopes because the keycloak configuration was ongoing.
 
-In your browser, you may now head over to https://localhost/deephub-admin-ui/ or https://localhost/deephub-kiosk-ui/ to access the DeepHub UI. This will cause a warning from your internet browser because this repo only contains a self-signed certificate for the https connection. Accept it within the browser's warning dialog and you should be redirected to the UI and from there immediately to the keycloak authentication request. Enter "deephub-tester" as the username and the password you've chosen and login. You will now be redirected to the DeepHub UI.
+In your browser, you may now head over to https://localhost/deephub-ui/admin/ or https://localhost/deephub-ui/ to access the DeepHub UI. This will cause a warning from your internet browser because this repo only contains a self-signed certificate for the https connection. Accept it within the browser's warning dialog and you should be redirected to the UI and from there immediately to the keycloak authentication request. Enter "deephub-tester" as the username and the password you've chosen and login. You will now be redirected to the DeepHub UI.
 
 Have fun with the DeepHub!
 
@@ -71,8 +73,8 @@ docker compose up
 
 This command will automatically pull the necessary docker images from hub.docker.com, create docker containers, and start the containers. In case you want to see all log output immediately, invoke the former command omitting the "-d" parameter (deamon mode).
 
-|:point_up: | It may become necessary to manually call ```docker compose pull``` first. This is the case if a newer docker image with the same name was published and therefore needs to get "re-pulled". This should not happen in general as we release updates as docker images with a different/newer tag.|
-|-----------|:---------------------------------------------------------------------------------------------------------------------------|
+| :point_up: | It may become necessary to manually call ```docker compose pull``` first. This is the case if a newer docker image with the same name was published and therefore needs to get "re-pulled". This should not happen in general as we release updates as docker images with a different/newer tag. |
+| ---------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 Now you have your own running DeepHub® instance that can be accessed with any modern web browser at the address: https://localhost
 
