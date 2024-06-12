@@ -1,4 +1,3 @@
-version: "3.2"
 services:
   postgresql:
     image: docker.io/bitnami/postgresql:11
@@ -24,7 +23,6 @@ services:
 
   deephub:
     image: flowcate/deephub:2.5.0
-    container_name: deephub-2.5.0-https-auth
     restart: unless-stopped
     read_only: true
     logging:
@@ -53,7 +51,6 @@ services:
 
   deephub-ui:
     image: flowcate/deephub-ui:2.5.0-nginx-1.26.0
-    container_name: deephub-ui-2.5.0-https-auth
     tty: true
     stdin_open: true
     read_only: true
@@ -86,7 +83,6 @@ services:
 
   deephub-apache:
     image: httpd:alpine
-    container_name: deephub-apache-2.5.0-https-auth
     restart: unless-stopped
     read_only: true
     logging:
