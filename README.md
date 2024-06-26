@@ -60,6 +60,9 @@ If you see this, this is a clear sign that everything is configured correctly.
 
 Note: You may have to stop the system and restart it again because the DeepHub may not have gotten all the latest roles and scopes because the keycloak configuration was ongoing.
 
+| :point_up: | If you used the provided omlox-realm.json, everything should be set-up correctly. In case you set-up the keycloak manually, please note, that the compatibility flag "Exclude Issuer From Authentication Response" has to be switched *on*. This flag can be found in the "Advanced" section of a "Client". In our example, the "deephub-ui-test-client" is the one that has to be configured like this. Read the [keycloak upgrade guide](https://www.keycloak.org/docs/latest/upgrading/index.html) for details.
+| ---------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
 In your browser, you may now head over to https://localhost/deephub-ui/admin/ or https://localhost/deephub-ui/ to access the DeepHub UI. This will cause a warning from your internet browser because this repo only contains a self-signed certificate for the https connection. Accept it within the browser's warning dialog and you should be redirected to the UI and from there immediately to the keycloak authentication request. Enter "deephub-tester" as the username and the password you've chosen and login. You will now be redirected to the DeepHub UI.
 
 Have fun with the DeepHub!
