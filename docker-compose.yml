@@ -76,7 +76,6 @@ services:
       # "localhost" has to be used here because these variables are used within the client browser and there, keycloak and UI can be reached
       # at "localhost" and not as the "keycloak" name valid within the docker network.
       - DEEPHUB_AUTH_ISSUER=http://localhost/realms/omlox
-      - DEEPHUB_AUTH_REDIRECT_URI=https://localhost/deephub-ui/
       - DEEPHUB_AUTH_CLIENT_ID=deephub-ui-test-client
     networks:
       - deephub-net
