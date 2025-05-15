@@ -91,7 +91,6 @@
       }
     ],
     "client": {
-      "deephub-ui-test-client": [],
       "realm-management": [
         {
           "id": "5f83f6cd-7a04-494f-a667-43e5d8880313",
@@ -305,6 +304,7 @@
         }
       ],
       "deephub-test-client": [],
+      "deephub-ui-test-client": [],
       "security-admin-console": [],
       "admin-cli": [],
       "account-console": [],
@@ -460,6 +460,36 @@
   "webAuthnPolicyPasswordlessAvoidSameAuthenticatorRegister": false,
   "webAuthnPolicyPasswordlessAcceptableAaguids": [],
   "webAuthnPolicyPasswordlessExtraOrigins": [],
+  "users": [
+    {
+      "id": "942f517d-9b23-45ca-ad2b-fe02ac75a276",
+      "createdTimestamp": 1747294033801,
+      "username": "deephub-tester",
+      "enabled": true,
+      "totp": false,
+      "emailVerified": false,
+      "credentials": [
+        {
+          "id": "6401345e-6b10-413b-9b02-1492e2c64495",
+          "type": "password",
+          "userLabel": "My password",
+          "createdDate": 1747294539399,
+          "secretData": "{\"value\":\"XDTxzd/N3juwyzAuxTvyF1pQGBXeRaizDaot/Q92rmI=\",\"salt\":\"NtM220ZD14IYf+Q+6qJNzQ==\",\"additionalParameters\":{}}",
+          "credentialData": "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [
+        "UPDATE_PASSWORD"
+      ],
+      "realmRoles": [
+        "default-roles-omlox",
+        "deephub-test-role"
+      ],
+      "notBefore": 0,
+      "groups": []
+    }
+  ],
   "clients": [
     {
       "id": "4bd7ab99-131f-4dbb-8840-1fa52e178efb",
@@ -1421,6 +1451,7 @@
   "browserSecurityHeaders": {
     "contentSecurityPolicyReportOnly": "",
     "xContentTypeOptions": "nosniff",
+    "referrerPolicy": "no-referrer",
     "xRobotsTag": "none",
     "xFrameOptions": "SAMEORIGIN",
     "contentSecurityPolicy": "frame-src 'self'; frame-ancestors 'self'; object-src 'none';",
@@ -2246,7 +2277,7 @@
     "frontendUrl": "",
     "acr.loa.map": "{}"
   },
-  "keycloakVersion": "23.0.4",
+  "keycloakVersion": "23.0.7",
   "userManagedAccessAllowed": false,
   "clientProfiles": {
     "profiles": []

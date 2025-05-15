@@ -13,6 +13,15 @@ services:
 
   keycloak:
     image: docker.io/bitnami/keycloak:23
+    volumes:
+      - ./omlox-realm.json:/opt/bitnami/keycloak/data/import/omlox-realm.json:ro
+    environment:
+      - "KEYCLOAK_ENABLE_HTTPS=false"
+      - "KEYCLOAK_EXTRA_ARGS=--import-realm"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://keycloak:8080/realms/omlox/.well-known/openid-configuration" ]
+      interval: 10s
+      start_period: 60s
     depends_on:
       - postgresql
     ports:
@@ -41,7 +50,8 @@ services:
       - DEEPHUB_LICENSE_KEY=<enter your trial license key here>
       - SQLITE_TMPDIR=/data
     depends_on:
-      - keycloak
+      keycloak:
+        condition: service_healthy
     ports:
       - "7081"
     volumes:
