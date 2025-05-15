@@ -1333,6 +1333,19 @@
       },
       "protocolMappers": [
         {
+          "id": "d0176f14-e213-4c7d-a0ae-37145211caea",
+          "name": "deephub-ui-test-audience-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "deephub-ui-test-client",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        },
+        {
           "id": "a3d3127c-4bd7-4d95-aa6f-27e38120e1fe",
           "name": "deephub-test-audience-mapper",
           "protocol": "openid-connect",
