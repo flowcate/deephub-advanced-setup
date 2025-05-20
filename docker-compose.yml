@@ -90,6 +90,8 @@ services:
       # This variable is only needed in keycloak runs within the same docker network.
       - DEEPHUB_AUTH_ISSUER_ALT_NAME=http://keycloak:8080/realms/omlox
       - DEEPHUB_AUTH_CLIENT_ID=deephub-ui-test-client
+      # Skipping the issuer validation should only ever be used for testing! DO NOT USE IN PRODUCTION!
+      - DEEPHUB_AUTH_SKIP_ISSUER_VALIDATION=true
     networks:
       - deephub-net
 
