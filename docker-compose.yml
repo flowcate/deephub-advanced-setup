@@ -12,7 +12,7 @@ services:
       - deephub-net
 
   keycloak:
-    image: docker.io/bitnami/keycloak:23
+    image: docker.io/bitnamilegacy/keycloak:26.2.5
     volumes:
       - ./omlox-realm.json:/opt/bitnami/keycloak/data/import/omlox-realm.json:ro
     environment:
