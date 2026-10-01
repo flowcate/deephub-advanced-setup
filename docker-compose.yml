@@ -1,6 +1,6 @@
 services:
   postgresql:
-    image: docker.io/bitnamilegacy/postgresql:17.6.0
+    image: docker.io/soldevelo/postgresql:17.6.0
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
